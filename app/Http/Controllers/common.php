@@ -51,12 +51,7 @@ class common extends Controller
     {      
     if(count($request->all()) >= 1)
 {
-    // $validated = $request->validate([
-    //     'name' => 'required',
-    //     'body' => 'required',
-    //     'phone' => 'required',
-    //     'post' => 'required',
-    // ]);
+
     $hobloo = new contact();
     $hobloo->name = $request->name;
     $hobloo->email = $request->email;
@@ -71,6 +66,7 @@ class common extends Controller
 else {
     redirect();
 }
+session()->flash('error','алдаа гарсан тул дахин оролно уу');
 return view('contact');
         
     }
