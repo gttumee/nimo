@@ -27,6 +27,7 @@ Route::get('/japanese',[ControllersCommon::class,'japanese'])->name('japanese');
 Route::get('/kanji-search',[ControllersCommon::class,'kanjiSearch'])->name('kanjisearch');
 Route::get('/contact',[ControllersCommon::class,'contact'])->name('contact');
 Route::post('/contact',[ControllersCommon::class,'contact'])->name('contact');
+Route::get('/jmongolia',[ControllersCommon::class,'jmongolia'])->name('jmongolia');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

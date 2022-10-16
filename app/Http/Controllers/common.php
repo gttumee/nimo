@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use Throwable;
 
 class common extends Controller
 {
@@ -37,15 +38,22 @@ class common extends Controller
     }
     public function kanjiSearch(Request $request)
     {
-        $translate = new GoogleTranslate('en');
-        $convert = function($data) use($translate){
-            return $translate->setSource("en")->setTarget("mn")->translate($data);
-        };
-        $result = $request->input('search');
-        $lastResult = Http::get("http://beta.jisho.org/api/v1/search/words?keyword=".$result)->json();
-        $resp = $lastResult['data'];
-       
-            return view('kanjisearch',compact('resp','result','convert'));     
+        try {
+            $translate = new GoogleTranslate('en');
+            $convert = function($data) use($translate){
+                return $translate->setSource("en")->setTarget("mn")->translate($data);
+            };
+            $result = $request->input('search');
+            $lastResult = Http::get("http://beta.jisho.org/api/v1/search/words?keyword=".$result)->json();
+            $resp = $lastResult['data'];
+            return view('kanjisearch',compact('resp','result','convert'));
+            
+        } catch (Throwable $e) {
+            report($e);
+     
+            return view('kanjisearch');
+        }
+            
     }
     public function contact(Request $request)
     {      
@@ -66,7 +74,6 @@ class common extends Controller
 else {
     redirect();
 }
-session()->flash('error','алдаа гарсан тул дахин оролно уу');
 return view('contact');
         
     }
@@ -93,5 +100,9 @@ return view('contact');
         $email = $request->email;
         $phone = $request->phone;
         $post = $request->post;
+    }
+
+    public function jmongolia(){
+        return view('jmongolia');
     }
 }

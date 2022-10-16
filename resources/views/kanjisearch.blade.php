@@ -35,6 +35,7 @@
                     <tr>
                       <td>{{$item['slug']}}</td>
                       <td>{{$item['japanese']['0']['reading']}}</td>
+                      <td>{{$item['word']['0']['reading']}}</td>
                       <td>{{$convert($item['senses']['0']['english_definitions']['0'])}}</td>
                       <td>{{$item['senses']['0']['english_definitions']['0']}}</td>
                       <td>

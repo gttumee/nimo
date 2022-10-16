@@ -65,13 +65,11 @@
                   <li class="nav-item ">
                     <a class="nav-link" href="{{route('jlpt')}}"> JLPT </a>
                   </li>
-  
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('japanese')}}"> Япон хэл</a>
-                  </li>
-
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('kanjisearch')}}">Ханз хайх</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('jmongolia')}}">Япон дахь Монголчууд</a>
                   </li>
   
                   <li class="nav-item">
