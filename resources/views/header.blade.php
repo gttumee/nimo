@@ -63,15 +63,14 @@
                   </li>
   
                   <li class="nav-item ">
-                    <a class="nav-link" href="{{route('jlpt')}}"> JLPT </a>
+                    <a class="nav-link" href="{{route('jlpt')}}"> JLPT Ханз </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('kanjisearch')}}">Ханз хайх</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('jmongolia')}}">Япон дахь Монголчууд</a>
+                    <a class="nav-link" href="{{route('jmongolia')}}">Еэн шилжүүлэг</a>
                   </li>
-  
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('contact')}}">Холбоо барих</a>
                   </li>
