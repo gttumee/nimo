@@ -68,17 +68,17 @@
 
       <div class="social-box">
         <a href="https://www.facebook.com/profile.php?id=100045644083858">
-          <img src="images/fb.png" alt="">
+          <img src="/images/fb.png" alt="">
         </a>
 
         <a href="">
-          <img src="images/twitter.png" alt="">
+          <img src="/images/twitter.png" alt="">
         </a>
         <a href="">
-          <img src="images/linkedin.png" alt="">
+          <img src="/images/linkedin.png" alt="">
         </a>
         <a href="">
-          <img src="images/instagram.png" alt="">
+          <img src="/images/instagram.png" alt="">
         </a>
       </div>
     </div>
@@ -93,5 +93,5 @@
 </section>
 <!-- footer section -->
 
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>

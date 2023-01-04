@@ -15,19 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/index',[ControllersCommon::class,'index'])->name('index');
+
+Route::get('/',[ControllersCommon::class,'index'])->name('index');
 Route::get('/about',[ControllersCommon::class,'about'])->name('about');
-Route::post('/jlpt',[ControllersCommon::class,'jlpt'])->name('jlpt');
 Route::get('/jlpt',[ControllersCommon::class,'jlpt'])->name('jlpt');
 Route::get('/japanese',[ControllersCommon::class,'japanese'])->name('japanese');
+Route::get('/kanji',[ControllersCommon::class,'kanjiIndex'])->name('kanjiIndex');
 Route::get('/kanji-search',[ControllersCommon::class,'kanjiSearch'])->name('kanjisearch');
 Route::get('/contact',[ControllersCommon::class,'contact'])->name('contact');
 Route::post('/contact',[ControllersCommon::class,'contact'])->name('contact');
 Route::get('/jmongolia',[ControllersCommon::class,'jmongolia'])->name('jmongolia');
+Route::post('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
+Route::get('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

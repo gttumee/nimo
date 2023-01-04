@@ -29,16 +29,19 @@ class common extends Controller
     }
     public function jlpt(Request $request)
     {
-        
         return view('jlpt');
     }
     public function japanese()
     {
         return view('japanese');
     }
+    public function kanjiIndex(){
+        return view('kanjisearch');
+    }
+    
     public function kanjiSearch(Request $request)
     {
-        try {
+        
             $translate = new GoogleTranslate('en');
             $convert = function($data) use($translate){
                 return $translate->setSource("en")->setTarget("mn")->translate($data);
@@ -46,13 +49,7 @@ class common extends Controller
             $result = $request->input('search');
             $lastResult = Http::get("http://beta.jisho.org/api/v1/search/words?keyword=".$result)->json();
             $resp = $lastResult['data'];
-            return view('kanjisearch',compact('resp','result','convert'));
-            
-        } catch (Throwable $e) {
-            report($e);
-     
-            return view('kanjisearch');
-        }
+         return view('kanjisearch',compact('resp','result','convert'));
             
     }
     public function contact(Request $request)
@@ -104,5 +101,18 @@ return view('contact');
 
     public function jmongolia(){
         return view('jmongolia');
+    }
+
+    public function durem(Request $request){   
+        $result = DB::select("SELECT 
+        hanzud->>'jlpt' as jlpt,
+        hanzud->>'kanji' as kanji,
+        hanzud->>'on_readings' as on_readings,
+        hanzud->>'kun_readings' as kun_readings, 
+        hanzud->>'meanings' as meanings , 
+        hanzud->>'stroke_count' as stroke_count 
+        FROM kanjis
+        WHERE (hanzud->>'jlpt')::INT = $request->id");
+        return view('jlpt-view', compact('result'));
     }
 }

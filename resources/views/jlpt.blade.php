@@ -12,26 +12,21 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="admission_detail-box">
-                  <form action="{{route('jlpt')}}" method="POST">
-                    @csrf
                   <h3>
-                    <input class="call_to-btn btn_white-border" type="submit" value="N5 (80 Ханз)" name="jlpt-n5 ">
+                    <button type="button" class="call_to-btn btn_white-border" id="n1" onclick="location.href='{{ route('jlpt-view',['id'=>'1']) }}' ">N1</button>                     
                   </h3>
                   <h3>
-                    <input class="call_to-btn btn_white-border" type="submit" value="N4 (167 Ханз)" name="jlpt-n4">
-       
+                    <button type="button" class="call_to-btn btn_white-border" id="n3" onclick="location.href='{{ route('jlpt-view',['id'=>'2']) }}' ">N2</button>                     
                   </h3>
                   <h3>
-                    <input class="call_to-btn btn_white-border" type="submit" value="N3 (370 Ханз)" name="jlpt-n3">
-                     
+                    <button type="button" class="call_to-btn btn_white-border" id="n3" onclick="location.href='{{ route('jlpt-view',['id'=>'3']) }}' ">N3</button>                     
                   </h3>
                   <h3>
-                    <input class="call_to-btn btn_white-border" type="submit" value="N2 (720 Ханз)" name="jlpt-n2">
+                    <button type="button" class="call_to-btn btn_white-border" id="n3" onclick="location.href='{{ route('jlpt-view',['id'=>'4']) }}' ">N4</button>                     
                   </h3>
                   <h3>
-                    <input class="call_to-btn" type="submit" value="N1 (1235 Ханз)" name="jlpt-n1">
+                    <button type="button" class="call_to-btn btn_white-border" id="n3" onclick="location.href='{{ route('jlpt-view',['id'=>'5']) }}' ">N5</button>                     
                   </h3>
-                </form>
                 </div>
               </div>
               <div class="col-md-6">
