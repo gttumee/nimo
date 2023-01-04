@@ -10,27 +10,41 @@
             <div class="row">
                   @foreach($result as $keys=>$kanjis)
                   <h3>
-                    <input class="call_to-btn btn_white-border" type="submit" value="{{($keys.'.'.$kanjis->kanji)}}"data-toggle="modal" data-target="#exampleModalCenter">
+                    <input class="call_to-btn btn_white-border" type="submit" value="{{($keys.'.'.$kanjis->kanji)}}"data-toggle="modal" data-target="#exampleModalCenter{{$keys}}">
                   </h3>
-                  @endforeach
-            </div>
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter{{$keys}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h3 class="modal-title" id="exampleModalLongTitle">{{($kanjis->kanji)}}</h3 >
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                  </div>
+                  <h5>
+                    Он дуудлага:
+                    <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->on_readings)))}}</small>
+                  </h5>
+                  <h5>
+                    Күн дуудлага:
+                    <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->kun_readings)))}}</small>
+                  </h5>
+                  <h5>
+                    Англи:
+                    <small class="text-muted">{{$englishWord=Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->meanings)))}}</small>
+                  </h5>
+                  <h5>
+                    Зурлага:
+                    <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
+                  </h5>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
+                    <button type="button" class="btn btn-primary">Хадаглах</button>
                   </div>
                 </div>
               </div>
+            </div>
+              @endforeach
             </div>
           </div>
         </section>

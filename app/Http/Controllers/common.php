@@ -41,14 +41,13 @@ class common extends Controller
     
     public function kanjiSearch(Request $request)
     {
-        
+            $result = $request->input('search');
+            $lastResult = Http::get("http://beta.jisho.org/api/v1/search/words?keyword=".$result)->json();
+            $resp = $lastResult['data'];
             $translate = new GoogleTranslate('en');
             $convert = function($data) use($translate){
                 return $translate->setSource("en")->setTarget("mn")->translate($data);
             };
-            $result = $request->input('search');
-            $lastResult = Http::get("http://beta.jisho.org/api/v1/search/words?keyword=".$result)->json();
-            $resp = $lastResult['data'];
          return view('kanjisearch',compact('resp','result','convert'));
             
     }
