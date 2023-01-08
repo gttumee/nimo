@@ -41,10 +41,6 @@
                   <h5>
                     Зурлага:
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
-                  </h5>
-                  Монгол орчуулга нэмэх:
-                  <small class="text-muted"><input type="text"></small>  <button type="button" class="btn btn-primary">Хадаглах</button>
-                </h5>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
                     <button type="button" class="btn btn-primary">Хадаглах</button>

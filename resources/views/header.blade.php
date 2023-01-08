@@ -53,11 +53,11 @@
                     <a class="nav-link" href="{{route('jlpt')}}">JLPT ханз</a>
                   </li>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a class="nav-link" href="{{route('jmongolia')}}">JLPT дүрэм</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{route('jmongolia')}}">Сонгол</a> 
+                  <a class="nav-link" href="{{route('jmongolia')}}">Сонгол</a>  --}}
                 </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('kanjiIndex')}}">ҮГ хайх</a>
