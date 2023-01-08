@@ -24,9 +24,6 @@
                   <h3>
                     <button type="button" class="call_to-btn btn_white-border" id="n3" onclick="location.href='{{ route('jlpt-view',['id'=>'4']) }}' ">N4</button>                     
                   </h3>
-                  <h3>
-                    <button type="button" class="call_to-btn btn_white-border" id="n3" onclick="location.href='{{ route('jlpt-view',['id'=>'5']) }}' ">N5</button>                     
-                  </h3>
                 </div>
               </div>
               <div class="col-md-6">

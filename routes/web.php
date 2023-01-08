@@ -28,6 +28,8 @@ Route::post('/contact',[ControllersCommon::class,'contact'])->name('contact');
 Route::get('/jmongolia',[ControllersCommon::class,'jmongolia'])->name('jmongolia');
 Route::post('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
 Route::get('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
+Route::get('/search', [ControllersCommon::class, 'askServer'])->name('search');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

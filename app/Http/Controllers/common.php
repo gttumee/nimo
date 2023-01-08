@@ -103,7 +103,8 @@ return view('contact');
     }
 
     public function durem(Request $request){   
-        $result = DB::select("SELECT 
+        $result = DB::select("SELECT
+        en,mon, 
         hanzud->>'jlpt' as jlpt,
         hanzud->>'kanji' as kanji,
         hanzud->>'on_readings' as on_readings,
@@ -114,4 +115,38 @@ return view('contact');
         WHERE (hanzud->>'jlpt')::INT = $request->id");
         return view('jlpt-view', compact('result'));
     }
+    public function askServer(Request $request)
+{
+$utf8Str=$request->input('search');
+
+$curl = curl_init();
+$sjisStr = rawurlencode($utf8Str);
+
+
+curl_setopt_array($curl, [
+	CURLOPT_URL => "https://kanjialive-api.p.rapidapi.com/api/public/kanji/$sjisStr",
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => [
+		"X-RapidAPI-Host: kanjialive-api.p.rapidapi.com",
+		"X-RapidAPI-Key: 77590c5f46msh23844986c40dc0bp1f481djsn6480f0cafe03"
+	],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+	echo "cURL Error #:" . $err;
+} else {
+    return view('jlpt-detail',compact('response'));
+}
+}
 }

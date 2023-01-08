@@ -10,13 +10,14 @@
             <div class="row">
                   @foreach($result as $keys=>$kanjis)
                   <h3>
-                    <input class="call_to-btn btn_white-border" type="submit" value="{{($keys.'.'.$kanjis->kanji)}}"data-toggle="modal" data-target="#exampleModalCenter{{$keys}}">
+                    <input class="call_to-btn btn_white-border" type="submit" value="{{($kanjis->kanji)}}"data-toggle="modal" data-target="#exampleModalCenter{{$keys}}" id="ask-server">
                   </h3>
             <div class="modal fade" id="exampleModalCenter{{$keys}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">{{($kanjis->kanji)}}</h3 >
+                    <h3 class="modal-title" id="exampleModalLongTitle">{{($kanjis->kanji.' '.$kanjis->mon)}}</h3 >
+                      <small class="text-muted">{{"N".$kanjis->jlpt}}</small>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -30,6 +31,10 @@
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->kun_readings)))}}</small>
                   </h5>
                   <h5>
+                    Монгол:
+                    <small class="text-muted" id="hariult">{{$kanjis->mon}} </small>
+                  </h5>
+                  <h5>
                     Англи:
                     <small class="text-muted">{{$englishWord=Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->meanings)))}}</small>
                   </h5>
@@ -37,6 +42,9 @@
                     Зурлага:
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
                   </h5>
+                  Монгол орчуулга нэмэх:
+                  <small class="text-muted"><input type="text"></small>  <button type="button" class="btn btn-primary">Хадаглах</button>
+                </h5>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
                     <button type="button" class="btn btn-primary">Хадаглах</button>
@@ -48,6 +56,20 @@
             </div>
           </div>
         </section>
+        <h3 class="question">How are you server ?</h3>
+        <input type="button" id="aa">
+    <input type="button" class="button1">
 @include('footer')
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+      $('#aa').click(function(){
+          $.ajax({url: "/ask-server" }).done(function( data ) {
+          $('.button1').val(data.answer);
+          });
+      });
+  });
+</script>    
  
