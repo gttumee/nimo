@@ -10,13 +10,13 @@
     <meta name="author" content="" />
     <title>Нимо</title>
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="/css\bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
     <!-- progress barstle -->
     <link rel="stylesheet" href="/css/css-circular-prog-bar.css">
     <!-- fonts style -->
-    <link href="/https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
     <!-- font wesome stylesheet -->
-    <link rel="stylesheet" href="/https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
@@ -47,7 +47,7 @@
                     <a class="nav-link" href="{{route('index')}}">Эхлэл<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item ">
-                    <a class="nav-link"href="{{route('about')}}"> Бидний тухай </a>
+                    <a class="nav-link"href="{{route('about')}}"> Япон хэл </a>
                   </li>
                   <li class="nav-item ">
                     <a class="nav-link" href="{{route('jlpt')}}">JLPT ханз</a>

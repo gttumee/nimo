@@ -2,32 +2,80 @@
 @yield('header')
 @include('header')
 @section('content')
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">  
-      <img class="d-block w-100" src="images/admission.png" alt="First slide" style="height: 500px;">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="images/students.jpg" alt="Second slide" style="height: 500px;">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="images/students.jpg" alt="Third slide" style="height: 500px;">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-@include('footer')
+<section class="contact_section ">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-10">
+          <div class="d-flex justify-content-center d-md-block">
+            <h2>
+             Ханз хайх
+            </h2>
+          </div>
+          <form method="GET" action="{{route('kanjisearch')}}">
+            <div class="contact_form-container">
+              <div>
+                <div>
+                  <input type="text" name="search" placeholder="Хайх ханзаа бичнэ үү!" value="{{ old('result') }}"> <button type="submit">Хайх</button>
+                </div>
+                <div>
+                  @if(isset($resp))
+                  таны хайлт:{{$result}}
+                  <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                      <th style="width:20%">Ханз</th>
+                      <th style="width:20%">Унших</th>
+                      <th style="width:30%">Монгол</th>
+                      <th style="width:30%">Англи</th>
+                      <th style="width:10%">jlpt</th>
+                    </tr>
+                  </thead>
+                    @foreach ($resp as $item)
+                    <tr>
+                      <td>
+                        @if(!isset($item['slug']))
+                        {{""}}
+                        @else
+                        {{$item['slug']}}
+                        @endif
+                      </td>
 
+                      <td>
+                        @if(!isset($item['japanese']['0']['reading']))
+                        {{""}}
+                        @else
+                        {{$item['japanese']['0']['reading']}}
+                        @endif
+                      </td>
+
+                      <td>{{$convert($item['senses']['0']['english_definitions']['0'])}}</td>
+
+                      <td>
+                        @if(!isset($item['senses']['0']['english_definitions']['0']))
+                        {{""}}
+                        @else
+                        {{$item['senses']['0']['english_definitions']['0']}}
+                        @endif
+                      </td>
+
+                      <td>
+                        @if($item['jlpt']==null)
+                        {{""}}
+                        @else
+                        {{substr($item['jlpt']['0'],-2)}}
+                        @endif
+                      </td>    
+                    </tr>
+                    @endforeach
+                  </table>       
+                  @endif
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+@include('footer')
 @endsection
