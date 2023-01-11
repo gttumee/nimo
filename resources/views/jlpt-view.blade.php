@@ -12,7 +12,7 @@
                   <h3>
                     <input class="call_to-btn btn_white-border" type="submit" value="{{($kanjis->kanji)}}"data-toggle="modal" data-target="#exampleModalCenter{{$keys}}" id="ask-server">
                   </h3>
-            <div class="modal fade" id="exampleModalCenter{{$keys}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+             <div class="modal fade" id="exampleModalCenter{{$keys}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -49,6 +49,7 @@
             </div>
               @endforeach
             </div>
+          </div>
           </div>
         </section>
       </div>

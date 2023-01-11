@@ -8,7 +8,7 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="d-flex justify-content-center d-md-block">
             <h2>
              Холбоо барих
@@ -16,9 +16,9 @@
           </div>
           @if (session('flash_message'))  
           <p class="alert alert-success col-md-7 col-md-offset-7">{{ session('flash_message') }}</p> 
-       @endif
+            @endif
           <form action="{{route('contact')}}" method="POST">
-     @csrf
+          @csrf
             <div class="contact_form-container">
               <div>
                 <div>
@@ -31,17 +31,13 @@
                   <input type="phone" placeholder="Утасны дугаар" name="phone" required  oninvalid="this.setCustomValidity('Та утасны дугаараа  оруулана уу!')"   oninput="this.setCustomValidity('')" > 
                 </div>
                 <div>
-                    <textarea cols="40" rows="5" placeholder="Захидал" name="post"></textarea>
+                    <textarea cols="38" rows="4" placeholder="Захидал" name="post"></textarea>
                 </div>
                 <div class="mt-5">
-                  <button type="submit">
-                    Илгээх
-                  </button>
+                  <button type="submit">Илгээх</button>
                 </div>
               </div>
-
             </div>
-
           </form>
         </div>
         <div class="col-md-6">
@@ -49,9 +45,7 @@
             <img src="images/students.jpg" alt="">
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+</section>
 
 @include('footer')
 
