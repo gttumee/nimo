@@ -1,5 +1,5 @@
 body {
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
   background-color: #fefeff;
 }
 
@@ -9,7 +9,7 @@ body {
 
 .layout_padding2 {
   padding: 45px 0;
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
   
 }
 
@@ -34,9 +34,9 @@ body {
   color: #262627;
   font-weight: 600;
   transition: all 0.3s ease 0s;
-  width: 40%;
-  min-width: 200px;
-  max-width: 600px;
+  width: 30%;
+  min-width: 150px;
+  max-width: 500px;
 }
 
 .hero_section .call_to-btn {}
@@ -68,7 +68,7 @@ body {
 
 .header_section {
   padding-top: 10px;
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
 }
 
 nav.navbar.navbar-expand-lg {
@@ -405,7 +405,7 @@ a:focus {
 
 .contact_section {
   padding: 75px 45px;
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
 }
 
 .contact_section .row {
@@ -448,7 +448,7 @@ a:focus {
   font-size: 26px;
   color: #010103;
   font-weight: 600;
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
   margin-bottom: 35px;
 }
 
@@ -460,13 +460,13 @@ a:focus {
 .info_section {
   background-color: #363636;
   color: #ffffff;
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
 }
 
 .info_logo-box {
   display: flex;
   justify-content: center;
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
 }
 
 .info_logo-box h2 {
@@ -546,7 +546,7 @@ a:focus {
 .footer_section {
   background-color:black;
   padding: 20px 15px;
-  font-family: 'Tahoma', cursive;
+  font-family: 'Arial';
 
 }
 

@@ -30,8 +30,8 @@
                 <div>
                   <input type="phone" placeholder="Утасны дугаар" name="phone" required  oninvalid="this.setCustomValidity('Та утасны дугаараа  оруулана уу!')"   oninput="this.setCustomValidity('')" > 
                 </div>
-                <div class="mt-5">
-                    <textarea cols="42" rows="5" placeholder="Захидал" name="post"></textarea>
+                <div>
+                    <textarea cols="40" rows="5" placeholder="Захидал" name="post"></textarea>
                 </div>
                 <div class="mt-5">
                   <button type="submit">

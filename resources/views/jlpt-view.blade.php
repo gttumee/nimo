@@ -43,7 +43,6 @@
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
-                    <button type="button" class="btn btn-primary">Хадаглах</button>
                   </div>
                 </div>
               </div>
