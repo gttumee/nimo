@@ -11,6 +11,8 @@
     <title>Нимо</title>
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <!-- Bootstrap -->
+  <script src="https://kit.fontawesome.com/272a1c6b44.js" crossorigin="anonymous"></script>
     <!-- progress barstle -->
     <link rel="stylesheet" href="/css/css-circular-prog-bar.css">
     <!-- fonts style -->
@@ -55,16 +57,14 @@
                     <a class="nav-link" href="{{route('jlpt')}}">JLPT ханз</a>
                   </li>
                 </li>
-                {{-- <li class="nav-item">
-                  <a class="nav-link" href="{{route('jmongolia')}}">JLPT дүрэм</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{route('jmongolia')}}">Сонгол</a>  --}}
-                </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('kanjiIndex')}}">ҮГ хайх</a>
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('contact')}}">Холбоо барих</a>
+                    <i class="bi bi-door-open"></i>
+                  </li>
+                  <li class="nav-item">
+                    <a  class="nav-link" style="background-color: #3b5998;" href="{{ route('facebook.login') }}" role="button" ><i class="fab fa-facebook-f"> Нэвтрэх</i></i></a>
                   </li>
                 </ul>
               </div>

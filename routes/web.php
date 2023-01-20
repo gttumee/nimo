@@ -30,6 +30,11 @@ Route::post('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-vi
 Route::get('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
 Route::get('/search', [ControllersCommon::class, 'askServer'])->name('search');
 
+Route::prefix('facebook')->name('facebook.')->group( function(){
+    Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
+    Route::get('callback', [FaceBookController::class, 'callbackFromFacebook'])->name('callback');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
