@@ -53,9 +53,16 @@
                   <li class="nav-item ">
                     <a class="nav-link"href="{{route('about')}}"> Япон хэл </a>
                   </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="{{route('jlpt')}}">JLPT ханз</a>
-                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    JLPT ханз
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('jlpt-view',['id'=>'4'])}}">JLPTN4</a>
+                    <a class="dropdown-item" href="{{ route('jlpt-view',['id'=>'3'])}}">JLPTN3</a>
+                    <a class="dropdown-item" href="{{ route('jlpt-view',['id'=>'2'])}}">JLPTN2</a>
+                    <a class="dropdown-item" href="{{ route('jlpt-view',['id'=>'1'])}}">JLPTN1</a>
+                  </div>
                 </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('kanjiIndex')}}">ҮГ хайх</a>

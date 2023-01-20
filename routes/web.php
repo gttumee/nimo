@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ControllersCommon::class,'index'])->name('index');
 Route::get('/about',[ControllersCommon::class,'about'])->name('about');
-Route::get('/jlpt',[ControllersCommon::class,'jlpt'])->name('jlpt');
 Route::get('/japanese',[ControllersCommon::class,'japanese'])->name('japanese');
 Route::get('/kanji',[ControllersCommon::class,'kanjiIndex'])->name('kanjiIndex');
 Route::get('/kanji-search',[ControllersCommon::class,'kanjiSearch'])->name('kanjisearch');

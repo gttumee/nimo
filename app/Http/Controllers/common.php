@@ -27,10 +27,6 @@ class common extends Controller
     {
         return view('about');
     }
-    public function jlpt(Request $request)
-    {
-        return view('jlpt');
-    }
     public function japanese()
     {
         return view('japanese');
