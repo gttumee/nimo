@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\c;
 use App\Models\contact;
 use App\Models\kanjis;
+use App\Models\registermail;
 use Facade\Ignition\QueryRecorder\Query;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,9 +20,16 @@ class common extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->input('email')){
+            $subscription = new registermail();
+            $subscription->email = $request->input('email');
+            $subscription->save();
+           return back()->with('flash_messages', '投稿が完了しました');
+        }
         return view('index');
+       
     }
     public function about()
     {

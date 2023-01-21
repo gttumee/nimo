@@ -45,17 +45,17 @@
         </p>
       </div>
       <div class="col-md-3">
-
-        <div class="subscribe_container">
+    <div class="subscribe_container">
           <h5>
             И-мэйлээр мэдээлэл авах
           </h5>
           <div class="form_container">
-            <form action="">
-              <input type="email" placeholder="И-мэйл">
-              <button type="submit">
-                Бүртгүүлэх
-              </button>
+            <form action="{{route('index')}}" method="POST">
+              @csrf
+              <input type="email" placeholder="И-мэйл" name="email"  required placeholder="И-мэйл"
+              oninvalid="this.setCustomValidity('И-мэйл оруулна уу')"
+              oninput="this.setCustomValidity('')"/>
+              <button type="submit" name="burtgel">Бүртгүүлэх</button>
             </form>
           </div>
         </div>

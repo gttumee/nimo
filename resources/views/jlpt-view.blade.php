@@ -22,9 +22,10 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
+                  <div class="m-3">
                   <h5>
                     Он дуудлага:
-                    <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->on_readings)))}}</small>
+                    <small class="text-muted ">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->on_readings)))}}</small>
                   </h5>
                   <h5>
                     Күн дуудлага:
@@ -41,6 +42,7 @@
                   <h5>
                     Зурлага:
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
+                  </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
                   </div>
