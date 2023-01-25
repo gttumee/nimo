@@ -12,7 +12,7 @@
                   <h3>
                     <button class="call_to-btn btn_white-border" type="submit" data-toggle="modal" data-target="#exampleModalCenter{{$keys}}" id="ask-server">
                       {{($kanjis->kanji)}}<br>
-                      <small class="text-muted">{{$kanjis->mon}}</small></button>
+                      <small class="text-muted-button">{{$kanjis->mon}}</small></button>
                   </h3>
             <div class="modal fade" id="exampleModalCenter{{$keys}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
