@@ -106,7 +106,21 @@ return view('contact');
         return view('jmongolia');
     }
 
-    public function durem(Request $request){   
+    public function durem(Request $request){ 
+        if($searcKanji = $request->input('search')){
+        $result = DB::select("SELECT
+             en,mon, 
+            hanzud->>'jlpt' as jlpt,
+            hanzud->>'kanji' as kanji,
+            hanzud->>'on_readings' as on_readings,
+            hanzud->>'kun_readings' as kun_readings, 
+            hanzud->>'meanings' as meanings , 
+            hanzud->>'stroke_count' as stroke_count 
+            FROM kanjis
+            WHERE (hanzud->>'kanji') like '%$searcKanji%'");
+        return view('jlpt-view', compact('result'));
+            
+        }
         $result = DB::select("SELECT
         en,mon, 
         hanzud->>'jlpt' as jlpt,

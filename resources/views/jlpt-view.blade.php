@@ -6,6 +6,15 @@
         <!-- admission section -->
         <section class="admission_section">
           <div class="container">
+            <div class="contact_form-container">
+              <div>
+                <form action="/jlpt-view" method="get">
+                  ханз хайх<br>
+                  <input type="text" name="search" placeholder="Хайх ханзаа бичнэ үү!" value="{{ old('result') }}"> 
+                  <button type="submit">Хайх</button>
+                </form>
+              </div>
+              </div>
             Нийт ханзны тоо:{{count($result)}}
             <div class="row">
                   @foreach($result as $keys=>$kanjis)

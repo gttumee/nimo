@@ -19,16 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ControllersCommon::class,'index'])->name('index');
 Route::post('/',[ControllersCommon::class,'index'])->name('index');
-Route::get('/about',[ControllersCommon::class,'about'])->name('about');
-Route::get('/japanese',[ControllersCommon::class,'japanese'])->name('japanese');
-Route::get('/kanji',[ControllersCommon::class,'kanjiIndex'])->name('kanjiIndex');
-Route::get('/kanji-search',[ControllersCommon::class,'kanjiSearch'])->name('kanjisearch');
-Route::get('/contact',[ControllersCommon::class,'contact'])->name('contact');
-Route::post('/contact',[ControllersCommon::class,'contact'])->name('contact');
-Route::get('/jmongolia',[ControllersCommon::class,'jmongolia'])->name('jmongolia');
-Route::post('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
-Route::get('/jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
-Route::get('/search', [ControllersCommon::class, 'askServer'])->name('search');
+Route::get('about',[ControllersCommon::class,'about'])->name('about');
+Route::get('japanese',[ControllersCommon::class,'japanese'])->name('japanese');
+Route::get('kanji',[ControllersCommon::class,'kanjiIndex'])->name('kanjiIndex');
+Route::get('kanji-search',[ControllersCommon::class,'kanjiSearch'])->name('kanjisearch');
+Route::get('contact',[ControllersCommon::class,'contact'])->name('contact');
+Route::post('contact',[ControllersCommon::class,'contact'])->name('contact');
+Route::get('jmongolia',[ControllersCommon::class,'jmongolia'])->name('jmongolia');
+Route::post('jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
+Route::get('jlpt-view/',[ControllersCommon::class,'durem'])->name('jlpt-view');
+Route::get('jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
+Route::get('search', [ControllersCommon::class, 'askServer'])->name('search');
 
 Route::prefix('facebook')->name('facebook.')->group( function(){
     Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
