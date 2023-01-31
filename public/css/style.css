@@ -25,6 +25,12 @@ body {
   padding-bottom: 75px;
 }
 
+button.vertical {
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  width: 9em;
+}
+
 .call_to-btn {
   padding: 15px 45px;
   border-radius: 5px;
