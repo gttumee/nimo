@@ -17,22 +17,12 @@
               </div>
             Нийт ханзны тоо:{{count($result)}}
             <div class="row">
-              <form action="/jlpt-view" method="post" id="form1">
                   @foreach($result as $keys=>$kanjis)
-                  @if($keys == 1)
                   <h3>
                     <button class="btn btn-light vertical" type="submit" data-toggle="modal" data-target="#exampleModalCenter{{$keys}}" id="ask-server">
                       {{($kanjis->kanji)}}<br>
                       <small class="text-muted-button">{{$kanjis->mon}}</small></button>
                   </h3>
-                  @else
-                  <h3>
-                    <button class="btn btn-light vertical" type="submit" data-toggle="modal" data-target="#exampleModalCenter{{$keys}}" id="ask-server">
-                      {{($kanjis->kanji)}}<br>
-                      <small class="text-muted-button">{{$kanjis->mon}}</small></button>
-            
-                  </h3>
-                  @endif
                   <div class="modal fade" id="exampleModalCenter{{$keys}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -63,15 +53,12 @@
                   <h5>
                     Зурлага:
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
-                    Цээжилчихсэн:<input type="checkbox" checked="checked" value="1" id="id">
+                  
                   </div>
                   <div class="modal-footer">
-            
                     <button type="submit" class="btn btn-success" form="form1">Хадаглах</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
-                 
                   </div>
-                </form>
                 </div>
               </div>
             </div>
