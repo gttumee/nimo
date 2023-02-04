@@ -6,15 +6,12 @@
         <!-- admission section -->
         <section class="admission_section m-auto">
           <div class="container p-2">
-            <div class="contact_form-container">
-              <div>
-                <form action="/jlpt-view" method="post">
-                  ханз хайх<br>
-                  <input type="text" name="search" placeholder="Хайх ханзаа бичнэ үү!" value="{{ old('result') }}"> 
-                  <button type="submit">Хайх</button>
-                </form>
-              </div>
-              </div>
+            <div>
+              {{-- {{dd($result['0']->jlpt)}} --}}
+              <button class="btn btn-info">Ханз{{" N".$result['0']->jlpt}}</button>
+              <button class="btn btn-info">Дүрэм{{" N".$result['0']->jlpt}}</button>
+              <button class="btn btn-info">Тест{{" N".$result['0']->jlpt}}</button>
+            </div>
             Нийт ханзны тоо:{{count($result)}}
             <div class="row">
                   @foreach($result as $keys=>$kanjis)
@@ -53,16 +50,23 @@
                   <h5>
                     Зурлага:
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
-                  
+                  </h5>
+                  <form action="/jlpt-view" method="post">
+                    @csrf
+                  <h5>
+                    Цээжилчихсэн:
+                    <small class="text-muted"><input type="checkbox" id="check" name="kanji" value="{{$kanjis->dummy_id}}"></small>
+                  </h5>
                   </div>
+                  
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" form="form1">Хадаглах</button>
+                    <button type="submit" class="btn btn-success">Хадгалах</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
+                  </form>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
               @endforeach
             </div>
              </div>

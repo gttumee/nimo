@@ -6,6 +6,7 @@ use App\Models\c;
 use App\Models\contact;
 use App\Models\kanjis;
 use App\Models\registermail;
+use App\Models\rememberedkanji;
 use Facade\Ignition\QueryRecorder\Query;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,9 @@ class common extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    private $resultList;
+
+     public function index(Request $request)
     {
         if($request->input('email')){
             $subscription = new registermail();
@@ -107,21 +110,8 @@ return view('contact');
     }
 
     public function durem(Request $request){ 
-        if($searcKanji = $request->input('search')){
         $result = DB::select("SELECT
-             en,mon, 
-            hanzud->>'jlpt' as jlpt,
-            hanzud->>'kanji' as kanji,
-            hanzud->>'on_readings' as on_readings,
-            hanzud->>'kun_readings' as kun_readings, 
-            hanzud->>'meanings' as meanings , 
-            hanzud->>'stroke_count' as stroke_count 
-            FROM kanjis
-            WHERE (hanzud->>'kanji') like '%$searcKanji%'");
-        return view('jlpt-view', compact('result'));
-            
-        }
-        $result = DB::select("SELECT
+        dummy_id,
         en,mon, 
         hanzud->>'jlpt' as jlpt,
         hanzud->>'kanji' as kanji,
@@ -131,17 +121,29 @@ return view('contact');
         hanzud->>'stroke_count' as stroke_count 
         FROM kanjis
         WHERE (hanzud->>'jlpt')::INT = $request->id");
+        $this->resultList =$result;
         return view('jlpt-view', compact('result'));
     }
+
+    public function checksave(Request $request){
+        if($kanjiid = $request->input('se')){
+            $rememberedkanji = new rememberedkanji();
+            $rememberedkanji->kanji_id = $kanjiid;
+            $rememberedkanji->user_id='5';
+            $rememberedkanji->save();
+        }
+        dd($result = $this->resultList);
+        return view('jlpt-view', compact('result'));
+        // $request->input('on')=$rememberedkanji->kanji_id;
+       
+    }
+
     public function askServer(Request $request)
-{
-$utf8Str=$request->input('search');
-
-$curl = curl_init();
-$sjisStr = rawurlencode($utf8Str);
-
-
-curl_setopt_array($curl, [
+    {
+    $utf8Str=$request->input('search');
+    $curl = curl_init();
+    $sjisStr = rawurlencode($utf8Str);
+    curl_setopt_array($curl, [
 	CURLOPT_URL => "https://kanjialive-api.p.rapidapi.com/api/public/kanji/$sjisStr",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_FOLLOWLOCATION => true,
@@ -167,4 +169,6 @@ if ($err) {
     return view('jlpt-detail',compact('response'));
 }
 }
+
+
 }
