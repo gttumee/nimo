@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\common as ControllersCommon;
+use App\Http\Controllers\gojapan;
 use App\Models\Common;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,10 @@ Route::get('jlpt-view/',[ControllersCommon::class,'durem'])->name('jlpt-view');
 Route::post('jlpt-view/',[ControllersCommon::class,'checksave'])->name('jlpt-view');
 Route::get('jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
 Route::get('search', [ControllersCommon::class, 'askServer'])->name('search');
+Route::get('job',[gojapan::class,'job'])->name('job');
+Route::get('study',[gojapan::class,'study'])->name('study');
+Route::get('travel',[gojapan::class,'travel'])->name('travel');
+Route::get('event',[gojapan::class,'event'])->name('event');
 
 Route::prefix('facebook')->name('facebook.')->group( function(){
     Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
@@ -45,3 +50,6 @@ Route::get('/dashboard', function () {
 
 
 require __DIR__.'/auth.php';
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

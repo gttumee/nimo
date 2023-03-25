@@ -64,9 +64,17 @@
                     <a class="dropdown-item" href="{{ route('jlpt-view',['id'=>'1'])}}">JLPTN1</a>
                   </div>
                 </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('kanjiIndex')}}">ҮГ хайх</a>
-                  <li class="nav-item">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Япон явах уу
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('job')}}">Ажилах</a>
+                    <a class="dropdown-item" href="{{ route('study')}}">Сурах</a>
+                    <a class="dropdown-item" href="{{ route('travel')}}">Аялах</a>
+                    <a class="dropdown-item" href="{{ route('event')}}">Event</a>
+                  </div>
+                </li>
                     <a class="nav-link" href="{{route('contact')}}">Холбоо барих</a>
                     <i class="bi bi-door-open"></i>
                   </li>
