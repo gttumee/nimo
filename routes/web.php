@@ -37,6 +37,10 @@ Route::get('study',[gojapan::class,'study'])->name('study');
 Route::get('travel',[gojapan::class,'travel'])->name('travel');
 Route::get('event',[gojapan::class,'event'])->name('event');
 
+//ажил сургууль аялал эвэнтийн шинээр бүртгэл орж ирэх хэсэг 
+Route::post('jobrequest',[gojapan::class,'jobrequest'])->name('jobrequest');
+Route::get('rirekshoview',[gojapan::class,'rirekshoview'])->name('rirekshoview');
+
 Route::prefix('facebook')->name('facebook.')->group( function(){
     Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
     Route::get('callback', [FaceBookController::class, 'callbackFromFacebook'])->name('callback');
