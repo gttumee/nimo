@@ -55,7 +55,7 @@
                   </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    JLPT ханз
+                    JLPT
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('jlpt-view',['id'=>'4'])}}">JLPTN4</a>

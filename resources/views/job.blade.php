@@ -14,8 +14,8 @@
                             <h1 class="display-5 fw-bolder text-white mb-2">Японд үндсэн ажилтнаар ажиллах боломж</h1>
                             {{-- <p class="lead text-white-50 mb-4">Гэр бүлээрээ Япон улсад ажиллах амьдрах боломжтой </p> --}}
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#anket">Анкэт бөглөх</a> 
-                                <a class="btn btn-primary btn-lg px-4 me-sm-4" href="{{route('rirekshoview')}}">Анкэт харах</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#anket">Анкет бөглөх</a> 
+                                <a class="btn btn-primary btn-lg px-4 me-sm-4" href="{{route('rirekshoview')}}">Анкет харах</a>
 
                             </div>
                         </div>
@@ -77,6 +77,10 @@
                               <label for="name">Нас </label>
                               <input class="form-control" id="name" type="text" name="age" placeholder="Нас" data-sb-validations="required" />
                             </div>
+                            <div class="form-floating mb-3">
+                                <label for="name">Гэрийн хаяг </label>
+                                <input class="form-control" id="name" type="text" name="address" placeholder="Гэрийн хаяг" data-sb-validations="required" />
+                              </div>
                             <div class="form-floating mb-3">
                             <label for="name">Хүйс </label>
                             <select  class="form-control" name="gender" id="">

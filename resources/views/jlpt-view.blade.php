@@ -15,11 +15,19 @@
             Нийт ханзны тоо:{{count($result)}}
             <div class="row">
                   @foreach($result as $keys=>$kanjis)
+                  @if($kanjis->delete_flag == '1')
+                  <h3>
+                    <button class="btn btn-warning vertical" type="submit" data-toggle="modal" data-target="#exampleModalCenter{{$keys}}" id="ask-server">
+                      {{($kanjis->kanji)}}<br>
+                      <small class="text-muted-button">{{$kanjis->mon}}</small></button>
+                  </h3>
+                  @else
                   <h3>
                     <button class="btn btn-light vertical" type="submit" data-toggle="modal" data-target="#exampleModalCenter{{$keys}}" id="ask-server">
                       {{($kanjis->kanji)}}<br>
                       <small class="text-muted-button">{{$kanjis->mon}}</small></button>
                   </h3>
+                  @endif
                   <div class="modal fade" id="exampleModalCenter{{$keys}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -51,11 +59,13 @@
                     Зурлага:
                     <small class="text-muted">{{Str::replace(']', '',Str::replace('[', ' ', Str::replace('"', '', $kanjis->stroke_count)))}}</small>
                   </h5>
-                  <form action="/jlpt-view" method="post">
+                  <form action="/hozon" method="get">
                     @csrf
                   <h5>
                     Цээжилчихсэн:
-                    <small class="text-muted"><input type="checkbox" id="check" name="kanji" value="{{$kanjis->dummy_id}}"></small>
+                    <input type="hidden" name="kanji" value="0"><input name="kanji" type="checkbox" value="1">
+                    <input type="hidden" id="jlpt-level" name="jlpt-level" value="{{$kanjis->jlpt}}">
+                    <input type="hidden" id="kanji_id" name="kanji_id" value="{{$kanjis->dummy_id}}">
                   </h5>
                   </div>
                   

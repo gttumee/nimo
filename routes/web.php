@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\common as ControllersCommon;
 use App\Http\Controllers\gojapan;
-use App\Models\Common;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::get('/',[ControllersCommon::class,'index'])->name('index');
 Route::post('/',[ControllersCommon::class,'index'])->name('index');
 Route::get('about',[ControllersCommon::class,'about'])->name('about');
@@ -29,8 +26,8 @@ Route::post('contact',[ControllersCommon::class,'contact'])->name('contact');
 Route::get('jmongolia',[ControllersCommon::class,'jmongolia'])->name('jmongolia');
 Route::post('jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
 Route::get('jlpt-view/',[ControllersCommon::class,'durem'])->name('jlpt-view');
-Route::post('jlpt-view/',[ControllersCommon::class,'checksave'])->name('jlpt-view');
-Route::get('jlpt-view/{id}',[ControllersCommon::class,'durem'])->name('jlpt-view');
+Route::post('hozon',[ControllersCommon::class,'durem'])->name('hozon');
+Route::get('hozon',[ControllersCommon::class,'remember'])->name('hozon');
 Route::get('search', [ControllersCommon::class, 'askServer'])->name('search');
 Route::get('job',[gojapan::class,'job'])->name('job');
 Route::get('study',[gojapan::class,'study'])->name('study');
@@ -41,6 +38,7 @@ Route::get('event',[gojapan::class,'event'])->name('event');
 Route::post('jobrequest',[gojapan::class,'jobrequest'])->name('jobrequest');
 Route::get('rirekshoview',[gojapan::class,'rirekshoview'])->name('rirekshoview');
 
+//facebook login 
 Route::prefix('facebook')->name('facebook.')->group( function(){
     Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
     Route::get('callback', [FaceBookController::class, 'callbackFromFacebook'])->name('callback');

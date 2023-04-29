@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\gojapan as ModelsGojapan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class gojapan extends Controller
 {
@@ -13,14 +13,13 @@ class gojapan extends Controller
     }
     
     public  function jobrequest(Request $request){
-       
-        $dir = 'images';
-        // sampleディレクトリに画像を保存
+
         $file = $request->file('image');
         $orignal_filename = time().$file->getClientOriginalName();
-        Storage::put('image/'.$orignal_filename, $file);
+        $file->storeAs('test', 'specific_name.jpg', 'public');
         $user = new ModelsGojapan();
         $user->images = $orignal_filename;
+        $user->address = $request->address;
         $user->firstname = $request->firstname;
         $user->lastname =  $request->lastname;
         $user->age =  $request->age;
@@ -49,7 +48,11 @@ class gojapan extends Controller
     }
 
     public function rirekshoview(){
-        $cvdata= ModelsGojapan::where('id','5')->get();
-        return view('rirekshoview',compact('cvdata'));
+        $cvdata=ModelsGojapan::orderBy('created_at', 'desc')->first();
+        $translate = new GoogleTranslate('en');
+        $convert = function($data) use($translate){
+            return $translate->setSource("mn")->setTarget("ja")->translate($data);
+        };
+        return view('rirekshoview',compact('cvdata','convert'));
     }
 }

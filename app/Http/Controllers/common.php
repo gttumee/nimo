@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\c;
 use App\Models\contact;
 use App\Models\kanjis;
 use App\Models\registermail;
 use App\Models\rememberedkanji;
-use Facade\Ignition\QueryRecorder\Query;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use App\Services\CommonService;
+use Illuminate\Support\Facades\Redirect;
 use Throwable;
 
 class common extends Controller
@@ -58,6 +58,7 @@ class common extends Controller
          return view('kanjisearch',compact('resp','result','convert'));
             
     }
+    
     public function contact(Request $request)
     {      
     if(count($request->all()) >= 1)
@@ -99,20 +100,17 @@ return view('contact');
      */
     public function store(Request $request)
     {
-        $name = $request->name;
-        $email = $request->email;
-        $phone = $request->phone;
-        $post = $request->post;
     }
 
     public function jmongolia(){
         return view('jmongolia');
     }
 
-    public function durem(Request $request){ 
+    public function durem(Request $request)
+    {
         $result = DB::select("SELECT
-        dummy_id,
-        en,mon, 
+        kanjis.dummy_id,
+        kanjis.en,kanjis.mon,rememberedkanjis.delete_flag,
         hanzud->>'jlpt' as jlpt,
         hanzud->>'kanji' as kanji,
         hanzud->>'on_readings' as on_readings,
@@ -120,55 +118,18 @@ return view('contact');
         hanzud->>'meanings' as meanings , 
         hanzud->>'stroke_count' as stroke_count 
         FROM kanjis
-        WHERE (hanzud->>'jlpt')::INT = $request->id");
-        $this->resultList =$result;
+        left join rememberedkanjis on rememberedkanjis.kanji_id = kanjis.dummy_id
+        WHERE (hanzud->>'jlpt')::INT = $request->id
+		order by rememberedkanjis.updated_at desc");
         return view('jlpt-view', compact('result'));
-    }
-
-    public function checksave(Request $request){
-        if($kanjiid = $request->input('se')){
-            $rememberedkanji = new rememberedkanji();
-            $rememberedkanji->kanji_id = $kanjiid;
-            $rememberedkanji->user_id='5';
-            $rememberedkanji->save();
         }
-        dd($result = $this->resultList);
-        return view('jlpt-view', compact('result'));
-        // $request->input('on')=$rememberedkanji->kanji_id;
-       
-    }
-
-    public function askServer(Request $request)
-    {
-    $utf8Str=$request->input('search');
-    $curl = curl_init();
-    $sjisStr = rawurlencode($utf8Str);
-    curl_setopt_array($curl, [
-	CURLOPT_URL => "https://kanjialive-api.p.rapidapi.com/api/public/kanji/$sjisStr",
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_FOLLOWLOCATION => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 30,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "GET",
-	CURLOPT_HTTPHEADER => [
-		"X-RapidAPI-Host: kanjialive-api.p.rapidapi.com",
-		"X-RapidAPI-Key: 77590c5f46msh23844986c40dc0bp1f481djsn6480f0cafe03"
-	],
-]);
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-	echo "cURL Error #:" . $err;
-} else {
-    return view('jlpt-detail',compact('response'));
-}
-}
-
-
+        
+        public function remember(Request $request){
+        if($kanji_id=$request->input('kanji_id')){
+            rememberedkanji::updateOrCreate(['kanji_id' => $kanji_id], 
+            ['delete_flag' =>  $request->kanji,'user_id' => 2]
+            );
+        }
+            return back();   
+        }
 }

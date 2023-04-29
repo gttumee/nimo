@@ -80,27 +80,26 @@
           </tr>
         </thead>
         <tbody>
-            @foreach($cvdata as $items)
           <tr style="height:33.5px">
             <td style="font-size:2rem; line-height:2rem; text-align:center" colspan="2">履 歴 書</td>
             <td></td>
             <td></td>
             <td></td>
-            <td style="text-align:right">2016年 12月 14日 現在</td>
+            <td style="text-align:right">{{$cvdata->created_at->format('Y年m月d日現在') }}
             <td></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr style="height:33.5px">
-            <td class="bd-t-s bd-l-s">{{$items->firstname}}</td>
-            <td class="bd-t-s bd-l-s" colspan="3">{{$items->lastname}}</td>
-            @if($items->gender == 'man')
+            <td class="bd-t-s bd-l-s">{{$convert($cvdata->firstname)}}</td>
+            <td class="bd-t-s bd-l-s" colspan="3">{{$convert($cvdata->lastname)}}</td>
+            @if($cvdata->gender == 'man')
             <td class="bd-t-s bd-l-dt center" rowspan="3">男</td>
             @else
-            <td class="bd-t-s bd-l-dt center" rowspan="3">女</td>
+            <td class="bd-t-s bd-l-dt center" rowspan="3">女</td> 
             @endif
-            <td class="bd-t-s bd-r-s bd-l-s center" rowspan="4">（写真を貼る位置）</td>
+            <td class="bd-t-s bd-r-s bd-l-s center" rowspan="4"><img src="{{ asset('image.jpg')}}" width="123" height="150"></td>
             <td></td>
             <td class="bd-t-s bd-l-s center">年</td>
             <td class="bd-t-s bd-l-dt center">月</td>
@@ -108,7 +107,7 @@
           </tr>
           <tr style="height:33.5px">
             <td class="bd-t-dt bd-l-s" rowspan="2">氏 名</td>
-            <td class="bd-t-dt" colspan="3" rowspan="2">{{$items->firstname}}　{{$items->lastname}}</td>
+            <td class="bd-t-dt" colspan="3" rowspan="2">{{$cvdata->firstname}}　{{$cvdata->lastname}}</td>
             <td></td>
             <td class="bd-t-db bd-l-s center"></td>
             <td class="bd-t-db bd-l-dt center"></td>
@@ -122,7 +121,7 @@
           </tr>
           <tr style="height:33.5px">
             <td class="bd-t-s bd-l-s">生年月日</td>
-            <td class="bd-t-s bd-l-s" colspan="4">1987年 01月 01日生 (満{{$items->age}}歳)</td>
+            <td class="bd-t-s bd-l-s" colspan="4">1987年 01月 01日生 (満{{$cvdata->age}}歳)</td>
             <td></td>
             <td class="bd-t-dt bd-l-s center"></td>
             <td class="bd-t-dt bd-l-dt center"></td>
@@ -145,7 +144,7 @@
             <td class="bd-t-dt bd-r-s bd-l-dt center"></td>
           </tr>
           <tr style="height:33.5px">
-            <td class="bd-r-s bd-l-s" colspan="6" rowspan="2">東京都港区芝公園4ｰ2ｰ8</td>
+            <td class="bd-r-s bd-l-s" colspan="6" rowspan="2">{{$cvdata->address}}</td>
             <td></td>
             <td class="bd-t-dt bd-l-s center"></td>
             <td class="bd-t-dt bd-l-dt center"></td>
@@ -159,9 +158,9 @@
           </tr>
           <tr style="height:33.5px">
             <td class="bd-t-s bd-l-s">電話</td>
-            <td class="bd-t-s" colspan="2">{{$items->phone}}</td>
+            <td class="bd-t-s" colspan="2">{{$cvdata->phone}}</td>
             <td class="bd-t-s bd-l-s">携帯電話</td>
-            <td class="bd-t-s bd-r-s" colspan="2">{{$items->phone}}</td>
+            <td class="bd-t-s bd-r-s" colspan="2">{{$cvdata->phone}}</td>
             <td></td>
             <td class="bd-t-dt bd-l-s center"></td>
             <td class="bd-t-dt bd-l-dt center"></td>
@@ -169,7 +168,7 @@
           </tr>
           <tr style="height:33.5px">
             <td class="bd-t-s bd-l-s">E-mail</td>
-            <td class="bd-t-s bd-r-s" colspan="5">{{$items->email}}</td>
+            <td class="bd-t-s bd-r-s" colspan="5">{{$cvdata->email}}</td>
             <td></td>
             <td class="bd-t-s bd-l-s center">年</td>
             <td class="bd-t-s bd-l-dt center">月</td>
@@ -182,7 +181,7 @@
             <td></td>
             <td class="bd-t-db bd-l-s center">平成xx</td>
             <td class="bd-t-db bd-l-dt center">1</td>
-            <td class="bd-t-db bd-r-s bd-l-dt">普通自動車運転免許 取得</td>
+            <td class="bd-t-db bd-r-s bd-l-dt">日本語能力試験{{$cvdata->japanese_level}}取得</td>
           </tr>
           <tr style="height:33.5px">
             <td class="bd-t-db bd-l-s center"></td>
@@ -194,7 +193,7 @@
             <td class="bd-t-dt bd-r-s bd-l-dt"></td>
           </tr>
           <tr style="height:33.5px">
-            <td class="bd-t-dt bd-l-s center">平成xx</td>
+            <td class="bd-t-dt bd-l-s center">xx</td>
             <td class="bd-t-dt bd-l-dt center">4</td>
             <td class="bd-t-dt bd-r-s bd-l-dt" colspan="4">○○高校 入学</td>
             <td></td>
@@ -275,7 +274,7 @@
           </tr>
         </tbody>
       </table>
-      @endforeach
+ 
     </page>
   </body>
 </html>
