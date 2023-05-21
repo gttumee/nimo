@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
-class common extends Controller
+class Common extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -58,8 +58,7 @@ class common extends Controller
     public function contact(Request $request)
     {      
     if(count($request->all()) >= 1)
-{
-
+    {
     $hobloo = new contact();
     $hobloo->name = $request->name;
     $hobloo->email = $request->email;
