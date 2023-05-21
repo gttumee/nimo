@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\contact;
-use App\Models\kanjis;
 use App\Models\registermail;
 use App\Models\rememberedkanji;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-use App\Services\CommonService;
-use Illuminate\Support\Facades\Redirect;
-use Throwable;
 
 class common extends Controller
 {
