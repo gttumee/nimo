@@ -41,7 +41,7 @@
           Холбоо барих
         </h5>
         <p>
-          Япон улс Токио хот Кокбунжи дүүрэг хигаши мотомачи 1-29-5 бриджэ Адоа 208
+          3-14-7-301 Aratacho Kobe Shi Hyogo Ku Hyogo Ken 652-0032 Japan
         </p>
       </div>
       <div class="col-md-3">
@@ -88,7 +88,7 @@
 <!-- footer section -->
 <section class="container-fluid footer_section">
   <p>
-    Copyright &copy; 2022 Нимо Япон хэл
+    <script>document.write(new Date().getFullYear())</script> Нимо Япон хэл All rights reserved
   </p>
 </section>
 <!-- footer section -->
